@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Empleados</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="app" class="container">
+    <h1>Lista de Actores</h1>
+    <a href="crearactor.html" class="btn btn-primary mb-3">Crear Actor</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="actor in actores" :key="actor.id">
+          <td>{{ actor.id }}</td>
+          <td>{{ actor.nombre }}</td>
+          <td><button @click="mostrarDetalle(actor.id)"  class="btn btn-primary mb-3">Mostrar</button>
+          <button @click="eliminar(actor.id)"  class="btn btn-danger mb-3">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div v-if="detalleActor">
+      <h2>Detalle del Actor</h2>
+      <p>ID: {{ detalleActor.id }}</p>
+      <p>Nombre: {{ detalleActor.nombre }}</p>
+    </div>
+  </div>
+
+  <!-- Axios y Vue.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+
+
+<!-- SweetAlert 2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
+
+  <!-- Archivo de script personalizado -->
+  <script src="actores.js"></script>
+</body>
+</html>

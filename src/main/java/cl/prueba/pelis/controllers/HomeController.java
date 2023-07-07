@@ -47,6 +47,14 @@ public class HomeController {
 		return servicioActor.actores();
 	}
 	
+	@GetMapping("/actores/{id}")
+	public Actor mostrarActor(@PathVariable("id") Long id) {
+		
+		return servicioActor.finById(id);
+		
+	}
+	
+	
 	//Update
 	@PostMapping("/actores/{id}")
 	public Actor updateActor(@PathVariable("id") Long id,@RequestBody Actor actor) {

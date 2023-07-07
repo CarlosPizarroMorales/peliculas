@@ -24,9 +24,10 @@ public class ActorService {
 	}
 	
 	public Actor finById(Long id) {
-		Optional<Actor> actor =actorRepository.findById(id); 
+		Optional<Actor> actor = actorRepository.findById(id); 
 		if(actor.isPresent()) {
-			return actor.get();}
+			return actor.get();
+		}
 		return null;
 	}
 	
@@ -35,7 +36,7 @@ public class ActorService {
 		 actorRepository.deleteById(id);;
 	}
 	
-	
+	//sin uso
 	public Actor modificarActor(Long id, String nombre) {
 		Optional<Actor> actorOptional = actorRepository.findById(id);
 		if(actorOptional.isPresent()) {
