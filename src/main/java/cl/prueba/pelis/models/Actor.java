@@ -55,9 +55,11 @@ public class Actor {
 		this.nombre = nombre;
 	}
 
-	
-	
-	
-	
-	
+	public List<Pelicula> getPeliculas() {
+		return peliculas;
+	}
+
+	public void setPeliculas(List<Pelicula> peliculas) {
+		this.peliculas = peliculas;
+	}
 }

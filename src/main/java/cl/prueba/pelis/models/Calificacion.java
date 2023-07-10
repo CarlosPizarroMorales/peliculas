@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 
 @Entity
 @Table(name="calificacion")
@@ -18,6 +21,8 @@ public class Calificacion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	
+	@Min(value=1, message="La nota debe ser mayor o igual a 1")
+	@Max(value=10, message="La nota debe ser menor o igual a 10")
 	int nota;
 	
 	@Column(length=1000)
@@ -60,5 +65,13 @@ public class Calificacion {
 
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+
+	public Pelicula getPelicula() {
+		return pelicula;
+	}
+
+	public void setPelicula(Pelicula pelicula) {
+		this.pelicula = pelicula;
 	}
 }

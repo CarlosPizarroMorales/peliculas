@@ -1,6 +1,5 @@
 package cl.prueba.pelis.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,13 +15,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import cl.prueba.pelis.dto.request.PeliculaRequestDto;
+
 @Entity
 @Table(name="pelicula")
-public class Pelicula {
+public class Pelicula extends CommonEntity{
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	private Long id;
 	@Column(unique=true)
 	private String nombre;
 	private int anno;
@@ -44,28 +45,48 @@ public class Pelicula {
 	public Pelicula() {}
 	
 	public Pelicula(Long id, String nombre, int anno) {
-		super();
-		this.id = id;
+		super(id);
 		this.nombre = nombre;
 		this.anno = anno;
 	}
 
-	public Long getId() {
-		return id;
+public Pelicula(PeliculaRequestDto input) {
+		this.nombre = input.getNombre();
+		this.anno = input.getAnno();
 	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+
+	//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getAnio() {
+	public int getAnno() {
 		return anno;
 	}
-	public void setAnio(int anno) {
+	public void setAnno(int anno) {
 		this.anno = anno;
+	}
+
+	public List<Calificacion> getCalificaciones() {
+		return calificaciones;
+	}
+
+	public void setCalificaciones(List<Calificacion> calificaciones) {
+		this.calificaciones = calificaciones;
+	}
+
+	public List<Actor> getActores() {
+		return actores;
+	}
+
+	public void setActores(List<Actor> actores) {
+		this.actores = actores;
 	}
 }
