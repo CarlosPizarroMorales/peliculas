@@ -16,7 +16,7 @@ public abstract class CommonCrudService<I, O, E extends CommonEntity, D> {
     
 	public O getOne(Long id) {
 		Optional<E> entity = repository.findById(id);
-		return this.map(entity.get());
+		return this.mapEntityToDto(entity.get());
 	}
 	
 	public List<O> getAll() {
@@ -26,7 +26,7 @@ public abstract class CommonCrudService<I, O, E extends CommonEntity, D> {
 		Optional<Iterable <E>> entities = Optional.of(repository.findAll());
 		if(entities.isPresent()) {
 			for(E e: entities.get()) {
-				o.add(map(e));
+				o.add(mapEntityToDto(e));
 			}
 		}
 		
@@ -41,8 +41,8 @@ public abstract class CommonCrudService<I, O, E extends CommonEntity, D> {
 		Optional<E> e = repository.findById(id);
 		if (e.isPresent()) {
 			E entity = e.get();
-			entity = mapDto(input, entity);
-			o = map(repository.save(entity));
+			entity = mapDtoToEntity(input, entity);
+			o = mapEntityToDto(repository.save(entity));
 			
 		}
 		return o;
@@ -53,7 +53,7 @@ public abstract class CommonCrudService<I, O, E extends CommonEntity, D> {
 		return this.mapDelete(id);
 	}
 
-	public abstract O map(E entity);
+	public abstract O mapEntityToDto(E entity);
 	public abstract D mapDelete(Long id);
-	public abstract E mapDto(I input, E entity);
+	public abstract E mapDtoToEntity(I input, E entity);
 }

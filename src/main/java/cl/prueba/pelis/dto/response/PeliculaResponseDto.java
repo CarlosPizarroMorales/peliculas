@@ -1,9 +1,13 @@
 package cl.prueba.pelis.dto.response;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PeliculaResponseDto {
 
 	int anno;
 	String nombre;
+	List<ActorResponseDto> actores = new ArrayList<>();
 	
 	public PeliculaResponseDto() {}
 
@@ -22,6 +26,16 @@ public class PeliculaResponseDto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public List<ActorResponseDto> getActores() {
+		return actores;
+	}
+
+	public void setActores(List<ActorResponseDto> actores) {
+		this.actores = actores;
+	}
 	
-	
+	public void add(List<ActorResponseDto> actores) {
+		this.actores.addAll(actores);
+	}
 }

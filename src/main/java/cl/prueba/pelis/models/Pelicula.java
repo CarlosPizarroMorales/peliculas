@@ -1,14 +1,12 @@
 package cl.prueba.pelis.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -21,9 +19,6 @@ import cl.prueba.pelis.dto.request.PeliculaRequestDto;
 @Table(name="pelicula")
 public class Pelicula extends CommonEntity{
 
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	private Long id;
 	@Column(unique=true)
 	private String nombre;
 	private int anno;
@@ -40,7 +35,7 @@ public class Pelicula extends CommonEntity{
 					@JoinColumn(name = "actor_id", referencedColumnName = "id", nullable = false, updatable = false)
 			}
 	)
-	private List<Actor> actores;
+	private List<Actor> actores = new ArrayList<>();
 	
 	public Pelicula() {}
 	
@@ -50,17 +45,12 @@ public class Pelicula extends CommonEntity{
 		this.anno = anno;
 	}
 
-public Pelicula(PeliculaRequestDto input) {
+public Pelicula(PeliculaRequestDto input, List<Actor> actores) {
 		this.nombre = input.getNombre();
 		this.anno = input.getAnno();
+		this.addActores(actores);
 	}
 
-	//	public Long getId() {
-//		return id;
-//	}
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -89,4 +79,9 @@ public Pelicula(PeliculaRequestDto input) {
 	public void setActores(List<Actor> actores) {
 		this.actores = actores;
 	}
+
+	public void addActores(List<Actor> actores) {
+		this.actores.addAll(actores);
+	}
+
 }
