@@ -45,10 +45,9 @@ public class Pelicula extends CommonEntity{
 		this.anno = anno;
 	}
 
-public Pelicula(PeliculaRequestDto input, List<Actor> actores) {
+public Pelicula(PeliculaRequestDto input) {
 		this.nombre = input.getNombre();
 		this.anno = input.getAnno();
-		this.addActores(actores);
 	}
 
 	public String getNombre() {

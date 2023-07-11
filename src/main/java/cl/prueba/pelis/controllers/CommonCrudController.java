@@ -27,7 +27,6 @@ public abstract class CommonCrudController<I, O, D, E extends CommonEntity>{
 
     @GetMapping
     ResponseEntity<List<O>> getAll() {
-    	System.out.println("En el controller!!");
     	return ResponseEntity.status(HttpStatus.OK).body(service.getAll());
     }
 

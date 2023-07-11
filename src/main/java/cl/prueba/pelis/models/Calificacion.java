@@ -35,9 +35,7 @@ public class Calificacion {
 	
 	public Calificacion() {}
 
-	public Calificacion(Long id, int nota, String comentario, Pelicula pelicula) {
-		super();
-		this.id = id;
+	public Calificacion(int nota, String comentario, Pelicula pelicula) {
 		this.nota = nota;
 		this.comentario = comentario;
 		this.pelicula = pelicula;

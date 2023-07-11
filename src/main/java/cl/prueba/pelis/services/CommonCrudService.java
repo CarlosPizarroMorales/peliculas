@@ -20,7 +20,6 @@ public abstract class CommonCrudService<I, O, E extends CommonEntity, D> {
 	}
 	
 	public List<O> getAll() {
-		System.out.println("En el service!!");
 		List<O> o = new ArrayList<>();
 		
 		Optional<Iterable <E>> entities = Optional.of(repository.findAll());

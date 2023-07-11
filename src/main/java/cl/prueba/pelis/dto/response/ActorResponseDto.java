@@ -1,10 +1,16 @@
 package cl.prueba.pelis.dto.response;
 
+import cl.prueba.pelis.models.Actor;
+
 public class ActorResponseDto {
 
     String nombre;
 
     public ActorResponseDto() {
+    }
+
+    public ActorResponseDto(Actor actor) {
+        this.nombre = actor.getNombre();
     }
 
     public String getNombre() {

@@ -3,6 +3,9 @@ package cl.prueba.pelis.dto.response;
 import java.util.ArrayList;
 import java.util.List;
 
+import cl.prueba.pelis.models.Actor;
+import cl.prueba.pelis.models.Pelicula;
+
 public class PeliculaResponseDto {
 
 	int anno;
@@ -10,6 +13,14 @@ public class PeliculaResponseDto {
 	List<ActorResponseDto> actores = new ArrayList<>();
 	
 	public PeliculaResponseDto() {}
+
+	public PeliculaResponseDto(Pelicula entity) {
+		this.anno = entity.getAnno();
+		this.nombre = entity.getNombre();
+		for(Actor actor : entity.getActores()) {
+			this.actores.add(new ActorResponseDto(actor));
+		} 
+	}
 
 	public int getAnno() {
 		return anno;
